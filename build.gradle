@@ -7,28 +7,18 @@ plugins {
     id "org.jetbrains.kotlin.jvm" version "1.8.20"
 }
 
-group 'com.example'
+group 'me.paulojr'
 version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
 
-ext {
-    junitVersion = '5.9.2'
-}
-
-sourceCompatibility = '17'
-targetCompatibility = '17'
-
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-application {
-    mainModule = 'me.paulojr.cadastrosfront'
-    mainClass = 'me.paulojr.cadastrosfront.CadastroApplication'
-}
+
 
 javafx {
     version = '17.0.6'
@@ -36,15 +26,19 @@ javafx {
 }
 
 dependencies {
-//    implementation "org.jetbrains.kotlin:kotlin-runtime:1.9.2"
+    implementation 'org.openjfx:javafx-controls:17.0.6'
+    implementation 'org.openjfx:javafx-fxml:17.0.6'
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
     implementation ("com.google.code.gson:gson:2.11.0")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
 
-test {
-    useJUnitPlatform()
+application {
+    mainModule.set('me.paulojr.cadastrosfront')
+    mainClass.set('me.paulojr.cadastrosfront.CadastroApplication')
+}
+
+java {
+    modularity.inferModulePath.set(true)
 }
 
 jlink {
@@ -57,4 +51,10 @@ jlink {
 
 jlinkZip {
     group = 'distribution'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'me.paulojr.cadastrosfront.CadastroApplication'
+    }
 }
