@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="120.0" prefWidth="207.0" spacing="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/22" fx:controller="me.paulojr.cadastrosfront.controller.ErroController">
+    <Label fx:id="mensagemErro" text="Erro desconhecido" wrapText="true" />
+    <Button onAction="#handleOk" text="OK" />
+</VBox>
